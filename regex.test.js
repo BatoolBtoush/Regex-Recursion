@@ -5,11 +5,12 @@
 /* Write a function that take a string and return true if the string only contain uppercase and lowercase
 characters (no numbers and symbols) and it should end with capital A else return false */
 
-function capitalA(s){
-    let batool = /^([a-zA-Z])+(A\b)$/
-    return batool.test(s);
-}
 
+  function capitalA(s){
+    // let batool = (/^[a-zA-Z\s]*$/.test(s)) && (batool[s.length - 1] === "A")
+    // return batool.test(s);
+    return ((/^[a-zA-Z\s]*$/.test(s)) && (s[s.length - 1] === "A"));
+}
 
 
 /* Write a function that take a string and return true if the the sting is following the emails pattern
@@ -26,14 +27,17 @@ find all images in that text and return their names and extention in an array
 required extention are jpg, jpeg and png.
 */
 
-function imagesSearcher(text){
-    let arr = [];
-    let b = /^[a-zA-Z]+\.(jpg|jpeg|png)$/
-    arr.push(text.match(b));
-    return text.match(b);
-    
-}
 
+  function imagesSearcher(text) {
+    //let arr = [];
+    let img = text.match(/\w+\.+(jpg|jpeg|png)/g);
+     
+     if (img !== null) {
+         return img;
+        } else {
+            return [];
+        }
+    }
 
 describe("Test capitalA", ()=>{
     test("It should return true if the input has uppercase and lowercase characters (no numbers and symbols) and it should end with capital A else return false ", () => {
